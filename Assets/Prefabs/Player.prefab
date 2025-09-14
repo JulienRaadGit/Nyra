@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6120835333004079754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4449270693332236013}
   - component: {fileID: -801186075142602080}
   - component: {fileID: 4713624648630203629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -109,8 +109,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -635082247
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -231,6 +231,7 @@ MonoBehaviour:
   weaponParent: {fileID: 6120835333004079754}
   auraPrefab: {fileID: 1070050673286470550, guid: cfb276a206d2f9744b19ad87755e4cc3, type: 3}
   starfallPrefab: {fileID: 3677564571821300306, guid: 6eaac83b34118b349846d0caa791eab4, type: 3}
+  orbitOrbPrefab: {fileID: 6254097010050124419, guid: 711c85d13fea32f4e8005bad8e34ae64, type: 3}
 --- !u!114 &-801186075142602080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,3 +272,4 @@ MonoBehaviour:
   maxHpMult: 1
   regenPerSec: 0
   spawnIFrames: 0.25
+  gold: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 328263995141711281}
   - component: {fileID: 2898490099989495333}
   - component: {fileID: 8067534564842604243}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AuraPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1324678527
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d421b4e2bdb4e3646b39836f5cbcde7e, type: 3}
   m_Color: {r: 0.59456396, g: 0, b: 1, a: 0.78431374}

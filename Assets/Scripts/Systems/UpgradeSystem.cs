@@ -6,7 +6,7 @@ public enum UpgradeId {
     // Stats
     XpPlus, GoldPlus, DamagePlus, CooldownMinus, MoveSpeed, MaxHpPlus, Regen,
     // Armes
-    Aura, Starfall
+    Aura, Starfall, Orbit
 }
 
 public class UpgradeSystem : MonoBehaviour {
@@ -26,7 +26,7 @@ public class UpgradeSystem : MonoBehaviour {
         UpgradeId.CooldownMinus, UpgradeId.MoveSpeed, UpgradeId.MaxHpPlus, UpgradeId.Regen
     };
     List<UpgradeId> weaponPool = new() {
-        UpgradeId.Aura, UpgradeId.Starfall
+        UpgradeId.Aura, UpgradeId.Starfall, UpgradeId.Orbit
     };
 
     // Suivi des niveaux pris (0 = pas encore pris)
@@ -199,6 +199,12 @@ public class UpgradeSystem : MonoBehaviour {
                 else if (newLevel <= 5) wm.UpgradeStarfall();  // niv 2..5
                 else wm.EvolveStarfall();                      // niv 6
                 break;
+
+            case UpgradeId.Orbit:
+                if (prevLevel == 0) wm.AddOrbit();
+                else if (newLevel <= 5) wm.UpgradeOrbit();     // niv 2..5
+                else wm.EvolveOrbit();                         // niv 6
+                break;
         }
     }
 
@@ -213,6 +219,7 @@ public class UpgradeSystem : MonoBehaviour {
         UpgradeId.Regen         => "Régén +0.2 PV/s",
         UpgradeId.Aura          => "Aura cauchemardesque",
         UpgradeId.Starfall      => "Chute d'étoiles",
+        UpgradeId.Orbit         => "Orbes en orbite",
         _ => id.ToString()
     };
 }

@@ -40,8 +40,11 @@ public class Aura : MonoBehaviour {
     }
 
     void OnTriggerStay2D(Collider2D colli){
-        if (colli.TryGetComponent<Damageable>(out var d)){
-            d.Take(damagePerSecond * Time.deltaTime);
+        if (colli.TryGetComponent<Damageable>(out var d))
+        {
+            // Scale damage by the player's global damage multiplier if available
+            float mult = PlayerStats.Instance ? PlayerStats.Instance.damageMult : 1f;
+            d.Take(damagePerSecond * mult * Time.deltaTime);
         }
     }
 }

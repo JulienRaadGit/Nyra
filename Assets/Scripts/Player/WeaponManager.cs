@@ -6,8 +6,13 @@ public class WeaponManager : MonoBehaviour {
     public GameObject auraPrefab;           // Prefabs/Weapons/AuraPrefab
     public GameObject starfallPrefab;       // (optionnel si tu veux un visuel par étoile)
 
+        [Header("Orbit Weapon")]
+        [Tooltip("Prefab used for each orb in the orbit weapon. Must include a SpriteRenderer, CircleCollider2D (trigger) and Rigidbody2D (kinematic).")]
+        public GameObject orbitOrbPrefab;
+
     Aura auraInstance;
     Starfall starfallInstance;
+    Orbit orbitInstance;
 
     void EnsureParent(){
         if (!weaponParent){
@@ -83,6 +88,55 @@ public class WeaponManager : MonoBehaviour {
     public void UpgradeStarfall(){
         if (!starfallInstance) return;
         starfallInstance.Upgrade();
+    }
+
+    // ---------- Orbit Weapon ----------
+    /// <summary>
+    /// Returns true if the player currently has the orbit weapon.
+    /// </summary>
+    public bool HasOrbit() => orbitInstance != null;
+
+    /// <summary>
+    /// Creates the orbit weapon if it does not already exist. Instantiates a pivot
+    /// under the weapons parent and attaches the Orbit script. Prefab orbs are
+    /// assigned via the inspector.
+    /// </summary>
+    public void AddOrbit()
+    {
+        EnsureParent();
+        if (orbitInstance) return;
+        if (!orbitOrbPrefab)
+        {
+            Debug.LogWarning("[WeaponManager] orbitOrbPrefab is not assigned. Cannot create orbit weapon.");
+            return;
+        }
+        var go = new GameObject("OrbitWeapon");
+        go.transform.SetParent(weaponParent);
+        go.transform.localPosition = Vector3.zero;
+        orbitInstance = go.AddComponent<Orbit>();
+        orbitInstance.Init(transform, orbitOrbPrefab, 1);
+    }
+
+    /// <summary>
+    /// Upgrades the orbit weapon to the next level. If it does not exist, it will be created.
+    /// </summary>
+    public void UpgradeOrbit()
+    {
+        if (!orbitInstance)
+        {
+            AddOrbit();
+            return;
+        }
+        if (orbitInstance.CanLevelUp()) orbitInstance.LevelUp();
+    }
+
+    /// <summary>
+    /// Evolves the orbit weapon. Applies evolution bonuses such as additional orbs and increased damage.
+    /// </summary>
+    public void EvolveOrbit()
+    {
+        if (!orbitInstance || orbitInstance.IsEvolved) return;
+        orbitInstance.Evolve();
     }
 
     // ---------- Evolutions (niv 6) ----------
