@@ -14,12 +14,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerWeapon
+  - Pickup
+  - Environment
+  - EnemyHitbox
   - 
   - 
   - 
@@ -44,4 +44,13 @@ TagManager:
     locked: 0
   - name: UI-World
     uniqueID: 223783669
+    locked: 0
+  - name: Player
+    uniqueID: 3659885049
+    locked: 0
+  - name: PlayerWeapon
+    uniqueID: 1324678527
+    locked: 0
+  - name: Enemy
+    uniqueID: 1566590293
     locked: 0
