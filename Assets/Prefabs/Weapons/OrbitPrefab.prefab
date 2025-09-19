@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 14972454168131849}
   - component: {fileID: 6417766401553703708}
   - component: {fileID: 3136868790917961197}
-  - component: {fileID: 8217484999545575392}
+  - component: {fileID: 1475672514577654736}
   m_Layer: 10
   m_Name: OrbitPrefab
   m_TagString: Untagged
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.17}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8217484999545575392
+--- !u!114 &1475672514577654736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,8 +158,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6254097010050124419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd689c0f4574d30418c10463cd428cc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5181e1cbaee1ce642b534c567f2f1c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  owner: {fileID: 0}
+  player: {fileID: 0}
+  orbPrefab: {fileID: 6254097010050124419}
+  level: 1
+  maxLevel: 5
+  baseDamage: 4
+  damagePerLevel: 2
+  baseRadius: 1.6
+  radiusPerLevel: 0.2
+  rotationSpeedDegPerSec: 120
+  clockwise: 1
+  scaleOrbsWithLevel: 1

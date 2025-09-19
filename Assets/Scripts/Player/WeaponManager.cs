@@ -5,14 +5,17 @@ public class WeaponManager : MonoBehaviour {
     public Transform weaponParent;          // crée un Empty "Weapons" sous le Player et assigne-le
     public GameObject auraPrefab;           // Prefabs/Weapons/AuraPrefab
     public GameObject starfallPrefab;       // (optionnel si tu veux un visuel par étoile)
+    public GameObject lightningPrefab;      // prefab visuel d’éclair (optionnel)
 
-        [Header("Orbit Weapon")]
-        [Tooltip("Prefab used for each orb in the orbit weapon. Must include a SpriteRenderer, CircleCollider2D (trigger) and Rigidbody2D (kinematic).")]
-        public GameObject orbitOrbPrefab;
+    [Header("Orbit Weapon")]
+    [Tooltip("Prefab used for each orb in the orbit weapon. Must include a SpriteRenderer, CircleCollider2D (trigger) and Rigidbody2D (kinematic).")]
+    public GameObject orbitOrbPrefab;
 
+    // Instances
     Aura auraInstance;
     Starfall starfallInstance;
     Orbit orbitInstance;
+    Lightning lightningInstance;
 
     void EnsureParent(){
         if (!weaponParent){
@@ -91,16 +94,8 @@ public class WeaponManager : MonoBehaviour {
     }
 
     // ---------- Orbit Weapon ----------
-    /// <summary>
-    /// Returns true if the player currently has the orbit weapon.
-    /// </summary>
     public bool HasOrbit() => orbitInstance != null;
 
-    /// <summary>
-    /// Creates the orbit weapon if it does not already exist. Instantiates a pivot
-    /// under the weapons parent and attaches the Orbit script. Prefab orbs are
-    /// assigned via the inspector.
-    /// </summary>
     public void AddOrbit()
     {
         EnsureParent();
@@ -117,9 +112,6 @@ public class WeaponManager : MonoBehaviour {
         orbitInstance.Init(transform, orbitOrbPrefab, 1);
     }
 
-    /// <summary>
-    /// Upgrades the orbit weapon to the next level. If it does not exist, it will be created.
-    /// </summary>
     public void UpgradeOrbit()
     {
         if (!orbitInstance)
@@ -130,13 +122,50 @@ public class WeaponManager : MonoBehaviour {
         if (orbitInstance.CanLevelUp()) orbitInstance.LevelUp();
     }
 
-    /// <summary>
-    /// Evolves the orbit weapon. Applies evolution bonuses such as additional orbs and increased damage.
-    /// </summary>
     public void EvolveOrbit()
     {
         if (!orbitInstance || orbitInstance.IsEvolved) return;
         orbitInstance.Evolve();
+    }
+
+    // ---------- Lightning ----------
+    public bool HasLightning() => lightningInstance != null;
+
+    public void AddLightning()
+    {
+        EnsureParent();
+        if (lightningInstance) return;
+
+        var go = new GameObject("Lightning");
+        go.transform.SetParent(weaponParent);
+        go.transform.localPosition = Vector3.zero;
+
+        lightningInstance = go.AddComponent<Lightning>();
+        if (lightningPrefab) lightningInstance.lightningVfxPrefab = lightningPrefab;
+
+        lightningInstance.SetLevel(1);
+    }
+
+    public void UpgradeLightning()
+    {
+        if (!lightningInstance)
+        {
+            AddLightning();
+            return;
+        }
+        lightningInstance.Upgrade();
+    }
+
+    public void EvolveLightning()
+    {
+        if (!lightningInstance || lightningInstance.IsEvolved) return;
+
+        // Exemple d’évolution (lvl 6) : cadence doublée, dégâts x2, +1 cible
+        lightningInstance.intervalPerLevel[5] = Mathf.Max(0.5f, lightningInstance.intervalPerLevel[5] * 0.5f);
+        lightningInstance.damagePerLevel[5] *= 2;
+        lightningInstance.targetsPerLevel[5] += 1;
+
+        lightningInstance.IsEvolved = true;
     }
 
     // ---------- Evolutions (niv 6) ----------

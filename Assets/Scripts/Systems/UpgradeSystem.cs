@@ -6,7 +6,7 @@ public enum UpgradeId {
     // Stats
     XpPlus, GoldPlus, DamagePlus, CooldownMinus, MoveSpeed, MaxHpPlus, Regen,
     // Armes
-    Aura, Starfall, Orbit
+    Aura, Starfall, Orbit, Lightning
 }
 
 public class UpgradeSystem : MonoBehaviour {
@@ -205,8 +205,15 @@ public class UpgradeSystem : MonoBehaviour {
                 else if (newLevel <= 5) wm.UpgradeOrbit();     // niv 2..5
                 else wm.EvolveOrbit();                         // niv 6
                 break;
+
+            case UpgradeId.Lightning:
+                if (prevLevel == 0) wm.AddLightning();
+                else if (newLevel <= 5) wm.UpgradeLightning();  // niv 2..5
+                else wm.EvolveLightning();                      // niv 6
+                break;
         }
     }
+
 
     // ---------- Titres ----------
     public static string Title(UpgradeId id) => id switch {
@@ -220,6 +227,7 @@ public class UpgradeSystem : MonoBehaviour {
         UpgradeId.Aura          => "Aura cauchemardesque",
         UpgradeId.Starfall      => "Chute d'étoiles",
         UpgradeId.Orbit         => "Orbes en orbite",
+        UpgradeId.Lightning     => "Éclair en plein air",
         _ => id.ToString()
     };
 }
