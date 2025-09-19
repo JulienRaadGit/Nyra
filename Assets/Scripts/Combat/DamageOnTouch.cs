@@ -1,51 +1,56 @@
 using UnityEngine;
 
-/// <summary>
-/// Generic component that applies damage to objects implementing the Damageable class
-/// when this collider enters their trigger. It is designed to be attached to any
-/// weapon sub-object (e.g. orbiting orbs) that uses a trigger collider. Damage
-/// values assigned to this component will be scaled by PlayerStats.damageMult
-/// automatically on hit. This script ignores collisions with the player and its
-/// children when an owner is specified.
-/// </summary>
+/// À mettre sur le prefab "Orbits".
+/// Requis : CircleCollider2D (isTrigger=true), Rigidbody2D (Kinematic, Gravity=0).
 [RequireComponent(typeof(Collider2D))]
 public class DamageOnTouch : MonoBehaviour
 {
-    [Tooltip("Base damage dealt when colliding. This value will be multiplied by the player's damage multiplier if available.")]
-    public float damage = 1f;
+    public float damage = 10f;
 
-    [Tooltip("Reference to the Orbit weapon that owns this orb. Used to ignore the player.")]
+    [Tooltip("Référence à l’arme (OrbitWeapon) pour ignorer le joueur.")]
     public Orbit owner;
-
-    void Reset()
-    {
-        // Ensure collider is a trigger and has a kinematic rigidbody for trigger events
-        var col = GetComponent<Collider2D>();
-        if (col) col.isTrigger = true;
-        var rb = GetComponent<Rigidbody2D>();
-        if (!rb)
-        {
-            rb = gameObject.AddComponent<Rigidbody2D>();
-        }
-        rb.isKinematic = true;
-        rb.simulated = true;
-        rb.gravityScale = 0f;
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Ignore collisions with triggers or self
         if (!other || other.isTrigger) return;
-        // If an owner is set, ignore collisions with the player or any of its children
-        if (owner != null && owner.player != null)
+
+        // ignorer le joueur et ses enfants
+        if (owner != null && owner.player != null && other.transform.IsChildOf(owner.player))
+            return;
+
+        // --- même esprit que tes autres armes : on essaye les méthodes courantes sans interface ---
+
+        // 1) EnemyHealth.TakeDamage(float)
+        var enemyHealth = other.GetComponent("EnemyHealth");
+        if (enemyHealth != null)
         {
-            if (other.transform.IsChildOf(owner.player)) return;
+            var mi = enemyHealth.GetType().GetMethod("TakeDamage", new System.Type[] { typeof(float) });
+            if (mi != null) { mi.Invoke(enemyHealth, new object[] { damage }); return; }
         }
-        // Try to apply damage via Damageable component
-        if (other.TryGetComponent<Damageable>(out var dmg))
+
+        // 2) Health.ApplyDamage(float)
+        var health = other.GetComponent("Health");
+        if (health != null)
         {
-            float mult = PlayerStats.Instance ? PlayerStats.Instance.damageMult : 1f;
-            dmg.Take(damage * mult);
+            var mi = health.GetType().GetMethod("ApplyDamage", new System.Type[] { typeof(float) });
+            if (mi != null) { mi.Invoke(health, new object[] { damage }); return; }
+        }
+
+        // 3) Enemy/Unit/Whatever.Hit(float)
+        var enemy = other.GetComponent("Enemy");
+        if (enemy != null)
+        {
+            var mi = enemy.GetType().GetMethod("Hit", new System.Type[] { typeof(float) });
+            if (mi != null) { mi.Invoke(enemy, new object[] { damage }); return; }
+        }
+
+        // 4) Dernier recours : cherche n’importe quel composant avec TakeDamage(float)
+        var comps = other.GetComponents<Component>();
+        foreach (var c in comps)
+        {
+            if (c == null) continue;
+            var mi = c.GetType().GetMethod("TakeDamage", new System.Type[] { typeof(float) });
+            if (mi != null) { mi.Invoke(c, new object[] { damage }); return; }
         }
     }
 }
