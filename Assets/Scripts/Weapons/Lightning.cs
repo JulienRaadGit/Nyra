@@ -67,10 +67,22 @@ public class Lightning : MonoBehaviour
                 var h = hits[i];
                 if (!h) continue;
 
-                // Dégâts : tente EnemyHealth puis SendMessage
-                var eh = h.GetComponentInParent<EnemyHealth>();
-                if (eh) eh.TakeDamage(dmg);
-                else h.gameObject.SendMessage("TakeDamage", dmg, SendMessageOptions.DontRequireReceiver);
+                // Créer un objet temporaire avec DamageOnTouch pour les dégâts
+                GameObject lightningStrike = new GameObject("LightningStrike");
+                lightningStrike.transform.position = h.transform.position;
+                
+                // Ajouter un collider pour le hit
+                CircleCollider2D col = lightningStrike.AddComponent<CircleCollider2D>();
+                col.isTrigger = true;
+                col.radius = 0.5f; // Petite zone d'impact
+                
+                // Ajouter DamageOnTouch pour gérer les dégâts
+                DamageOnTouch dot = lightningStrike.AddComponent<DamageOnTouch>();
+                dot.damage = dmg;
+                dot.owner = transform; // Owner est le joueur
+                
+                // Détruire l'objet après un court délai
+                Destroy(lightningStrike, 0.1f);
 
                 if (lightningVfxPrefab)
                     Instantiate(lightningVfxPrefab, h.transform.position, Quaternion.identity);

@@ -47,15 +47,24 @@ public class Starfall : MonoBehaviour {
     }
 
     void Impact(Vector2 pos){
-        // dégâts en zone (multipliés par stats)
-        float finalDamage = damage * (PlayerStats.Instance ? PlayerStats.Instance.damageMult : 1f);
-        var hits = Physics2D.OverlapCircleAll(pos, radius);
-        foreach (var h in hits){
-            if (h.TryGetComponent<Damageable>(out var d)){
-                d.Take(finalDamage);
-            }
-        }
-        // (Option) Effet visuel d’explosion ici
+        // Créer un objet temporaire avec DamageOnTouch pour les dégâts
+        GameObject impactObj = new GameObject("StarfallImpact");
+        impactObj.transform.position = pos;
+        
+        // Ajouter un collider circulaire
+        CircleCollider2D col = impactObj.AddComponent<CircleCollider2D>();
+        col.isTrigger = true;
+        col.radius = radius;
+        
+        // Ajouter DamageOnTouch pour gérer les dégâts
+        DamageOnTouch dot = impactObj.AddComponent<DamageOnTouch>();
+        dot.damage = Mathf.RoundToInt(damage * (PlayerStats.Instance ? PlayerStats.Instance.damageMult : 1f));
+        dot.owner = player;
+        
+        // Détruire l'objet après un court délai pour éviter les hits multiples
+        Destroy(impactObj, 0.1f);
+        
+        // (Option) Effet visuel d'explosion ici
     }
 
     // Appelée par l’Upgrade

@@ -80,6 +80,15 @@ public class Orbit : MonoBehaviour
         // Rotate the pivot so that orbs rotate around the player
         float dir = clockwise ? -1f : 1f;
         transform.Rotate(0f, 0f, dir * rotationSpeedDegPerSec * Time.deltaTime);
+        
+        // Counter-rotate each orb so their sprites maintain their original orientation
+        foreach (GameObject orb in _orbs)
+        {
+            if (orb != null)
+            {
+                orb.transform.Rotate(0f, 0f, -dir * rotationSpeedDegPerSec * Time.deltaTime);
+            }
+        }
     }
 
     /// <summary>
@@ -166,14 +175,13 @@ public class Orbit : MonoBehaviour
                 orb.transform.localScale = new Vector3(s, s, 1f);
             }
 
-            // Ensure the orb has a DamageOnTouch component to handle collisions
-            var dot = orb.GetComponent<DamageOnTouch>();
-            if (dot == null)
+            // Configure the orb with OrbitOrb script for proper damage handling
+            var orbitOrb = orb.GetComponent<OrbitOrb>();
+            if (orbitOrb == null)
             {
-                dot = orb.AddComponent<DamageOnTouch>();
+                orbitOrb = orb.AddComponent<OrbitOrb>();
             }
-            dot.damage = damage;
-            dot.owner = this;
+            orbitOrb.SetDamage(Mathf.RoundToInt(damage), player);
             _orbs.Add(orb);
         }
     }
