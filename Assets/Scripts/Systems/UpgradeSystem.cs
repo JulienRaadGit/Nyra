@@ -61,13 +61,15 @@ public class UpgradeSystem : MonoBehaviour {
     bool IsStat(UpgradeId id) => statPool.Contains(id);
     bool IsWeapon(UpgradeId id) => weaponPool.Contains(id);
 
-    int Cap(UpgradeId id) => IsWeapon(id) ? WEAPON_CAP : STAT_CAP;
+	int LevelOf(UpgradeId id) => levels.TryGetValue(id, out var lv) ? lv : 0;
 
-    bool IsMaxed(UpgradeId id) => levels.GetValueOrDefault(id,0) >= Cap(id);
+	int Cap(UpgradeId id) => IsWeapon(id) ? WEAPON_CAP : STAT_CAP;
 
-    bool IsOwned(UpgradeId id) => levels.GetValueOrDefault(id,0) > 0;
+	bool IsMaxed(UpgradeId id) => LevelOf(id) >= Cap(id);
 
-    IEnumerable<UpgradeId> AllIds() => statPool.Cast<UpgradeId>().Concat(weaponPool);
+	bool IsOwned(UpgradeId id) => LevelOf(id) > 0;
+
+	IEnumerable<UpgradeId> AllIds() => statPool.Concat(weaponPool);
 
     // ---------- Icônes ----------
     [System.Serializable]
@@ -94,7 +96,7 @@ public class UpgradeSystem : MonoBehaviour {
 
     // Libellé pour l’UI (titre + niveau)
     public string Label(UpgradeId id){
-        int lv = levels.GetValueOrDefault(id,0);
+		int lv = LevelOf(id);
         string baseTitle = Title(id);
         if (IsWeapon(id) && lv >= STAT_CAP) {
             // 5/5 -> prochaine = EVO (niv 6)
@@ -186,7 +188,7 @@ public class UpgradeSystem : MonoBehaviour {
         if (IsMaxed(id)) return; // sécurité
 
         // Incrémente le niveau
-        int prev = levels.GetValueOrDefault(id,0);
+		int prev = LevelOf(id);
         int next = Mathf.Min(prev + 1, Cap(id));
         levels[id] = next;
 
