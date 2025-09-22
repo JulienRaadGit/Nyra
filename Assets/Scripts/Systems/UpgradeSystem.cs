@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using Nyra.Upgrades;
 
+// Enum legacy - sera remplacé par celui dans le namespace Nyra.Upgrades
 public enum UpgradeId {
     // Stats
     XpPlus, GoldPlus, DamagePlus, CooldownMinus, MoveSpeed, MaxHpPlus, Regen,
@@ -12,8 +14,16 @@ public enum UpgradeId {
 public class UpgradeSystem : MonoBehaviour {
     public static UpgradeSystem Instance;
     public LevelUpUI ui;
-    [Header("UI")] public Sprite defaultIcon;
-    [Tooltip("Associe chaque UpgradeId à son Sprite d'icône")] public List<UpgradeIcon> iconList = new();
+    
+    [Header("Upgrade Database")]
+    [Tooltip("Base de données des upgrades (ScriptableObject)")]
+    public UpgradeDatabase upgradeDatabase;
+    
+    [Header("UI Legacy")]
+    [Tooltip("Icône par défaut si aucune n'est trouvée dans la DB")]
+    public Sprite defaultIcon;
+    [Tooltip("Associe chaque UpgradeId à son Sprite d'icône (legacy - sera remplacé par la DB)")] 
+    public List<UpgradeIcon> iconList = new();
 
     [Header("Options")]
     [Tooltip("Empêche d'ouvrir une nouvelle offre si le panneau est déjà affiché.")]
@@ -89,15 +99,37 @@ public class UpgradeSystem : MonoBehaviour {
     }
 
     public Sprite Icon(UpgradeId id){
+        // Priorité à la nouvelle base de données
+        if (upgradeDatabase != null)
+        {
+            var definition = upgradeDatabase.Get((Nyra.Upgrades.UpgradeId)id);
+            if (definition != null && definition.icon != null)
+            {
+                return definition.icon;
+            }
+        }
+        
+        // Fallback vers l'ancien système
         EnsureIconMap();
         if (iconMap.TryGetValue(id, out var sp) && sp != null) return sp;
         return defaultIcon;
     }
 
-    // Libellé pour l’UI (titre + niveau)
+    // Libellé pour l'UI (titre + niveau)
     public string Label(UpgradeId id){
 		int lv = LevelOf(id);
         string baseTitle = Title(id);
+        
+        // Priorité à la nouvelle base de données pour le titre
+        if (upgradeDatabase != null)
+        {
+            var definition = upgradeDatabase.Get((Nyra.Upgrades.UpgradeId)id);
+            if (definition != null && !string.IsNullOrEmpty(definition.label))
+            {
+                baseTitle = definition.label;
+            }
+        }
+        
         if (IsWeapon(id) && lv >= STAT_CAP) {
             // 5/5 -> prochaine = EVO (niv 6)
             return $"{baseTitle}  (niv {Mathf.Min(lv,5)}/5 → ÉVO)";
@@ -192,10 +224,28 @@ public class UpgradeSystem : MonoBehaviour {
         int next = Mathf.Min(prev + 1, Cap(id));
         levels[id] = next;
 
+        // Log clair de l'upgrade pické
+        string upgradeName = GetUpgradeDisplayName(id);
+        Debug.Log($"[UpgradeSystem] Upgrade pické: {upgradeName} (niveau {prev} → {next})");
+
         // Applique les effets
         Apply(id, prev, next);
-
-        // (Optionnel) : on pourrait ici logger/telemetry, etc.
+    }
+    
+    /// <summary>
+    /// Récupère le nom d'affichage d'un upgrade (priorité à la DB, fallback vers Title)
+    /// </summary>
+    private string GetUpgradeDisplayName(UpgradeId id)
+    {
+        if (upgradeDatabase != null)
+        {
+            var definition = upgradeDatabase.Get((Nyra.Upgrades.UpgradeId)id);
+            if (definition != null && !string.IsNullOrEmpty(definition.label))
+            {
+                return definition.label;
+            }
+        }
+        return Title(id);
     }
 
     // ---------- Application des effets ----------
