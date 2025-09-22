@@ -12,6 +12,8 @@ public enum UpgradeId {
 public class UpgradeSystem : MonoBehaviour {
     public static UpgradeSystem Instance;
     public LevelUpUI ui;
+    [Header("UI")] public Sprite defaultIcon;
+    [Tooltip("Associe chaque UpgradeId à son Sprite d'icône")] public List<UpgradeIcon> iconList = new();
 
     [Header("Options")]
     [Tooltip("Empêche d'ouvrir une nouvelle offre si le panneau est déjà affiché.")]
@@ -66,6 +68,29 @@ public class UpgradeSystem : MonoBehaviour {
     bool IsOwned(UpgradeId id) => levels.GetValueOrDefault(id,0) > 0;
 
     IEnumerable<UpgradeId> AllIds() => statPool.Cast<UpgradeId>().Concat(weaponPool);
+
+    // ---------- Icônes ----------
+    [System.Serializable]
+    public class UpgradeIcon {
+        public UpgradeId id;
+        public Sprite icon;
+    }
+
+    Dictionary<UpgradeId, Sprite> iconMap;
+    void EnsureIconMap(){
+        if (iconMap != null) return;
+        iconMap = new Dictionary<UpgradeId, Sprite>();
+        foreach (var e in iconList){
+            if (!iconMap.ContainsKey(e.id)) iconMap.Add(e.id, e.icon);
+            else iconMap[e.id] = e.icon;
+        }
+    }
+
+    public Sprite Icon(UpgradeId id){
+        EnsureIconMap();
+        if (iconMap.TryGetValue(id, out var sp) && sp != null) return sp;
+        return defaultIcon;
+    }
 
     // Libellé pour l’UI (titre + niveau)
     public string Label(UpgradeId id){

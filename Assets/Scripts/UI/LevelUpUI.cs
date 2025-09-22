@@ -7,6 +7,7 @@ public class LevelUpUI : MonoBehaviour {
     public GameObject panel;
     public Button[] buttons;
     public TextMeshProUGUI[] labels;
+    public Image[] icons; // Icônes affichées au-dessus du texte
 
     List<UpgradeId> current;
     bool isOpen;
@@ -47,6 +48,15 @@ public class LevelUpUI : MonoBehaviour {
             if (!on) continue;
 
             labels[i].text = UpgradeSystem.Instance.Label(current[i]);
+
+            // Configure l'icône si disponible
+            if (icons != null && i < icons.Length && icons[i] != null){
+                var sprite = UpgradeSystem.Instance.Icon(current[i]);
+                icons[i].sprite = sprite;
+                icons[i].enabled = sprite != null;
+                if (icons[i].gameObject.activeSelf != (sprite != null))
+                    icons[i].gameObject.SetActive(sprite != null);
+            }
 
             int k = i;
             buttons[i].onClick.RemoveAllListeners();
