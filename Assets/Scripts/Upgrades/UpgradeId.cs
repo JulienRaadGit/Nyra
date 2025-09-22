@@ -15,6 +15,8 @@ namespace Nyra.Upgrades
         
         // Armes
         Aura,
-        Starfall
+        Starfall,
+        Orbit,
+        Lightning
     }
 }
