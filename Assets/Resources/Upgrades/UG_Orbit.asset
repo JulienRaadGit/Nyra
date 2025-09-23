@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49cb0552b026719458ab112badbe7f51, type: 3}
   m_Name: UG_Orbit
   m_EditorClassIdentifier: 
-  id: 3
-  label: Orbit
-  description: "Tourne autour du joueur en infligeant des d\xE9g\xE2ts"
+  id: 5
+  label: Orbes
+  description: "Des orbes tournent autour du joueur et infligent des d\xE9g\xE2ts
+    de contact."
   icon: {fileID: 21300000, guid: 7e36dc82be8b17f458986409dd759afc, type: 3}
   maxLevel: 6

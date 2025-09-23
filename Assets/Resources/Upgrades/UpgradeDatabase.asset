@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a7e5c606e9f82419b56ccd4a8de0ab, type: 3}
   m_Name: UpgradeDatabase
   m_EditorClassIdentifier: 
-  upgradeDefinitions: []
+  upgradeDefinitions:
+  - {fileID: 11400000, guid: 5e6a397d7831c6340aca29e430ca80c3, type: 2}
+  - {fileID: 11400000, guid: 01371e68feba1fe448ff5b81e8f78aea, type: 2}
+  - {fileID: 11400000, guid: 8afee4500df46e8459fc2b0d22687735, type: 2}
+  - {fileID: 11400000, guid: 437acedcf89902a4aa61ac564a5d6a2e, type: 2}
+  - {fileID: 11400000, guid: f837d8f5301471d44877d5637fc7b57f, type: 2}
+  - {fileID: 11400000, guid: 86587fc93b9e5814290423c2ed7acb51, type: 2}
