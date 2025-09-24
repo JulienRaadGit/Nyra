@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7b894952948e60e4dbcf207636e0cca5
+guid: 581a0f8604d09b44b9d9719acd104128
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 433364886913964783
-    second: Parchemin_0
+      213: 7885844976668849345
+    second: Bougie_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Parchemin_0
+      name: Bougie_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 36
-        width: 396
-        height: 425
+        x: 3
+        y: 0
+        width: 1020
+        height: 1019
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fea52ae811f930600800000000000000
-      internalID: 433364886913964783
+      spriteID: 1c4352ca936207d60800000000000000
+      internalID: 7885844976668849345
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Parchemin_0: 433364886913964783
+      Bougie_0: 7885844976668849345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
