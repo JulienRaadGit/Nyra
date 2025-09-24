@@ -38,7 +38,7 @@ public class UpgradeSystem : MonoBehaviour {
         UpgradeId.CooldownMinus, UpgradeId.MoveSpeed, UpgradeId.MaxHpPlus, UpgradeId.Regen
     };
     List<UpgradeId> weaponPool = new() {
-        UpgradeId.Aura, UpgradeId.Starfall, UpgradeId.Orbit
+        UpgradeId.Aura, UpgradeId.Starfall, UpgradeId.Orbit, UpgradeId.Lightning
     };
 
     // Suivi des niveaux pris (0 = pas encore pris)
@@ -54,7 +54,7 @@ public class UpgradeSystem : MonoBehaviour {
         Instance = this;
 
         // Fallback: retrouve l'UI si non assignée dans l'Inspector
-        if (!ui) ui = FindObjectOfType<LevelUpUI>(true);
+        if (!ui) ui = FindFirstObjectByType<LevelUpUI>();
         if (!ui) Debug.LogError("[UpgradeSystem] Assigne 'ui' (LevelUpUI) dans l’Inspector.");
 
         foreach (var id in statPool) levels[id] = 0;
@@ -68,18 +68,20 @@ public class UpgradeSystem : MonoBehaviour {
     }
 
     // ---------- Helpers ----------
-    bool IsStat(UpgradeId id) => statPool.Contains(id);
+    bool IsStat(UpgradeId id)   => statPool.Contains(id);
     bool IsWeapon(UpgradeId id) => weaponPool.Contains(id);
 
-	int LevelOf(UpgradeId id) => levels.TryGetValue(id, out var lv) ? lv : 0;
+    int  LevelOf(UpgradeId id)  => levels.TryGetValue(id, out var lv) ? lv : 0;
+    int  Cap(UpgradeId id)      => IsWeapon(id) ? WEAPON_CAP : STAT_CAP;
 
-	int Cap(UpgradeId id) => IsWeapon(id) ? WEAPON_CAP : STAT_CAP;
+    bool IsMaxed(UpgradeId id)  => LevelOf(id) >= Cap(id);
+    bool IsOwned(UpgradeId id)  => LevelOf(id) > 0;
 
-	bool IsMaxed(UpgradeId id) => LevelOf(id) >= Cap(id);
+    IEnumerable<UpgradeId> AllIds() => statPool.Concat(weaponPool);
 
-	bool IsOwned(UpgradeId id) => LevelOf(id) > 0;
-
-	IEnumerable<UpgradeId> AllIds() => statPool.Concat(weaponPool);
+    // >>> Exposition publique pour l'UI (pips etc.)
+    public int Level(UpgradeId id)    => LevelOf(id);
+    public int MaxLevel(UpgradeId id) => Cap(id);
 
     // ---------- Icônes ----------
     [System.Serializable]
@@ -102,36 +104,80 @@ public class UpgradeSystem : MonoBehaviour {
         // Priorité à la nouvelle base de données
         if (upgradeDatabase != null)
         {
-            var definition = upgradeDatabase.Get((Nyra.Upgrades.UpgradeId)id);
-            if (definition != null && definition.icon != null)
+            var newId = MapToNewUpgradeId(id);
+            if (newId.HasValue)
             {
-                return definition.icon;
+                var definition = upgradeDatabase.Get(newId.Value);
+                if (definition != null && definition.icon != null)
+                {
+                    Debug.Log($"[UpgradeSystem] Icône trouvée pour {id} -> {newId.Value}: {definition.icon.name}");
+                    return definition.icon;
+                }
+                else
+                {
+                    Debug.LogWarning($"[UpgradeSystem] Aucune icône trouvée pour {id} -> {newId.Value} dans la DB");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"[UpgradeSystem] Pas de mapping pour {id} vers le nouvel enum");
             }
         }
+        else
+        {
+            Debug.LogWarning("[UpgradeSystem] UpgradeDatabase est null");
+        }
         
-        // Fallback vers l'ancien système
+        // Fallback legacy
         EnsureIconMap();
-        if (iconMap.TryGetValue(id, out var sp) && sp != null) return sp;
+        if (iconMap.TryGetValue(id, out var sp) && sp != null) 
+        {
+            Debug.Log($"[UpgradeSystem] Utilisation de l'icône legacy pour {id}: {sp.name}");
+            return sp;
+        }
+        
+        Debug.LogWarning($"[UpgradeSystem] Aucune icône trouvée pour {id}, utilisation de l'icône par défaut");
         return defaultIcon;
+    }
+
+    // ---------- Mapping entre les enums ----------
+    /// <summary>
+    /// Mappe l'ancien enum UpgradeId vers le nouveau Nyra.Upgrades.UpgradeId
+    /// </summary>
+    Nyra.Upgrades.UpgradeId? MapToNewUpgradeId(UpgradeId legacyId)
+    {
+        return legacyId switch
+        {
+            UpgradeId.MaxHpPlus => Nyra.Upgrades.UpgradeId.HP,
+            UpgradeId.DamagePlus => Nyra.Upgrades.UpgradeId.Damage,
+            UpgradeId.MoveSpeed => Nyra.Upgrades.UpgradeId.MoveSpeed,
+            UpgradeId.Aura => Nyra.Upgrades.UpgradeId.Aura,
+            UpgradeId.Starfall => Nyra.Upgrades.UpgradeId.Starfall,
+            UpgradeId.Orbit => Nyra.Upgrades.UpgradeId.Orbit,
+            UpgradeId.Lightning => Nyra.Upgrades.UpgradeId.Lightning,
+            _ => null // Pas de mapping pour les autres (XpPlus, GoldPlus, etc.)
+        };
     }
 
     // Libellé pour l'UI (titre + niveau)
     public string Label(UpgradeId id){
-		int lv = LevelOf(id);
+        int lv = LevelOf(id);
         string baseTitle = Title(id);
-        
-        // Priorité à la nouvelle base de données pour le titre
+
+        // Priorité au label de la DB
         if (upgradeDatabase != null)
         {
-            var definition = upgradeDatabase.Get((Nyra.Upgrades.UpgradeId)id);
-            if (definition != null && !string.IsNullOrEmpty(definition.label))
+            var newId = MapToNewUpgradeId(id);
+            if (newId.HasValue)
             {
-                baseTitle = definition.label;
+                var definition = upgradeDatabase.Get(newId.Value);
+                if (definition != null && !string.IsNullOrEmpty(definition.label))
+                    baseTitle = definition.label;
             }
         }
-        
+
         if (IsWeapon(id) && lv >= STAT_CAP) {
-            // 5/5 -> prochaine = EVO (niv 6)
+            // 5/5 -> prochaine = ÉVO (niv 6)
             return $"{baseTitle}  (niv {Mathf.Min(lv,5)}/5 → ÉVO)";
         }
         return $"{baseTitle}  (niv {Mathf.Min(lv,5)}/5)";
@@ -139,11 +185,10 @@ public class UpgradeSystem : MonoBehaviour {
 
     // ---------- Offre ----------
     void Offer(){
-        // Optionnels/guards
-        if (!ui) { ui = FindObjectOfType<LevelUpUI>(true); if (!ui) { Debug.LogError("[UpgradeSystem] ui NULL → impossible d’afficher les cartes."); return; } }
-        if (blockDuringPause && Time.timeScale == 0f) return; // déjà en pause avec un panel ouvert
+        // Guards
+        if (!ui) { ui = FindFirstObjectByType<LevelUpUI>(); if (!ui) { Debug.LogError("[UpgradeSystem] ui NULL → impossible d'afficher les cartes."); return; } }
+        if (blockDuringPause && Time.timeScale == 0f) return;
         if (preventDoubleOpen) {
-            // Si LevelUpUI expose IsOpen -> on l'utilise, sinon on check activeSelf
             bool alreadyOpen = false;
             try { alreadyOpen = ui.IsOpen; } catch { /* LevelUpUI sans IsOpen */ }
             if (alreadyOpen || (ui.panel && ui.panel.activeSelf)) return;
@@ -151,22 +196,20 @@ public class UpgradeSystem : MonoBehaviour {
 
         offerCount++;
 
-        // Pool filtré des éléments encore améliorables
-        List<UpgradeId> remainingStats  = statPool.Where(id => !IsMaxed(id)).ToList();
-        List<UpgradeId> remainingWeaps  = weaponPool.Where(id => !IsMaxed(id)).ToList();
-
+        // Pools filtrés
+        var remainingStats =  statPool.Where(id => !IsMaxed(id)).ToList();
+        var remainingWeaps =  weaponPool.Where(id => !IsMaxed(id)).ToList();
         var offer = new List<UpgradeId>();
 
-        // 1) Les 3 premières offres : armes uniquement
+        // 1) Les 3 premières offres : armes uniquement (avec fallback)
         if (offerCount <= 3){
             var pool = new List<UpgradeId>(remainingWeaps);
             FillDistinctRandom(offer, pool, 3);
-            // Si plus assez d’armes dispo, on complète par armes possédées non maxées
+
             if (offer.Count < 3){
                 var ownedUpgradableWeapons = weaponPool.Where(id => !IsMaxed(id) && IsOwned(id) && !offer.Contains(id)).ToList();
                 FillDistinctRandom(offer, ownedUpgradableWeapons, 3 - offer.Count);
             }
-            // Dernier recours: compléter avec stats restantes
             if (offer.Count < 3){
                 var fallback = remainingStats.Where(id => !offer.Contains(id)).ToList();
                 FillDistinctRandom(offer, fallback, 3 - offer.Count);
@@ -175,7 +218,7 @@ public class UpgradeSystem : MonoBehaviour {
             return;
         }
 
-        // 2) À partir de la 4e offre : au moins 1 amélioration déjà possédée
+        // 2) À partir de la 4e offre : forcer au moins 1 amélioration possédée
         var ownedUpgradables = AllIds().Where(id => IsOwned(id) && !IsMaxed(id)).ToList();
 
         if (ownedUpgradables.Count == 0){
@@ -185,15 +228,15 @@ public class UpgradeSystem : MonoBehaviour {
             return;
         }
 
-        // a) Forcer 1 pick depuis le possédé
+        // a) 1 pick depuis le possédé
         var oneOwned = ownedUpgradables[Random.Range(0, ownedUpgradables.Count)];
         offer.Add(oneOwned);
 
-        // b) Compléter : mélange stats+armes restants non maxés
+        // b) compléter depuis le pool général
         var generalPool = AllIds().Where(id => !IsMaxed(id) && !offer.Contains(id)).ToList();
         FillDistinctRandom(offer, generalPool, 3 - offer.Count);
 
-        // c) S’il manque encore, autoriser des doublons (rare)
+        // c) si manque encore, autoriser doublons
         if (offer.Count < 3){
             var dupes = AllIds().Where(id => !IsMaxed(id)).ToList();
             FillAllowDuplicates(offer, dupes, 3 - offer.Count);
@@ -219,30 +262,27 @@ public class UpgradeSystem : MonoBehaviour {
     public void Pick(UpgradeId id){
         if (IsMaxed(id)) return; // sécurité
 
-        // Incrémente le niveau
-		int prev = LevelOf(id);
+        int prev = LevelOf(id);
         int next = Mathf.Min(prev + 1, Cap(id));
         levels[id] = next;
 
-        // Log clair de l'upgrade pické
         string upgradeName = GetUpgradeDisplayName(id);
         Debug.Log($"[UpgradeSystem] Upgrade pické: {upgradeName} (niveau {prev} → {next})");
 
-        // Applique les effets
         Apply(id, prev, next);
     }
     
-    /// <summary>
-    /// Récupère le nom d'affichage d'un upgrade (priorité à la DB, fallback vers Title)
-    /// </summary>
-    private string GetUpgradeDisplayName(UpgradeId id)
+    /// Nom d'affichage (priorité DB)
+    string GetUpgradeDisplayName(UpgradeId id)
     {
         if (upgradeDatabase != null)
         {
-            var definition = upgradeDatabase.Get((Nyra.Upgrades.UpgradeId)id);
-            if (definition != null && !string.IsNullOrEmpty(definition.label))
+            var newId = MapToNewUpgradeId(id);
+            if (newId.HasValue)
             {
-                return definition.label;
+                var definition = upgradeDatabase.Get(newId.Value);
+                if (definition != null && !string.IsNullOrEmpty(definition.label))
+                    return definition.label;
             }
         }
         return Title(id);
@@ -253,44 +293,42 @@ public class UpgradeSystem : MonoBehaviour {
         var player = GameObject.FindGameObjectWithTag("Player");
         if (!player) return;
 
-        // Stats
-        var stats = PlayerStats.Instance ? PlayerStats.Instance : FindObjectOfType<PlayerStats>();
+        var stats = PlayerStats.Instance ? PlayerStats.Instance : FindFirstObjectByType<PlayerStats>();
         if (IsStat(id)){
+            // StatId doit matcher les noms (XpPlus, GoldPlus, etc.)
             stats?.ApplyStat((StatId)System.Enum.Parse(typeof(StatId), id.ToString()));
             return;
         }
 
-        // Armes
         var wm = player.GetComponent<WeaponManager>();
         if (!wm) wm = player.AddComponent<WeaponManager>();
 
         switch(id){
             case UpgradeId.Aura:
                 if (prevLevel == 0) wm.AddAura();
-                else if (newLevel <= 5) wm.UpgradeAura();      // niv 2..5
-                else wm.EvolveAura();                          // niv 6
+                else if (newLevel <= 5) wm.UpgradeAura();
+                else wm.EvolveAura(); // niv 6
                 break;
 
             case UpgradeId.Starfall:
                 if (prevLevel == 0) wm.AddStarfall();
-                else if (newLevel <= 5) wm.UpgradeStarfall();  // niv 2..5
-                else wm.EvolveStarfall();                      // niv 6
+                else if (newLevel <= 5) wm.UpgradeStarfall();
+                else wm.EvolveStarfall();
                 break;
 
             case UpgradeId.Orbit:
                 if (prevLevel == 0) wm.AddOrbit();
-                else if (newLevel <= 5) wm.UpgradeOrbit();     // niv 2..5
-                else wm.EvolveOrbit();                         // niv 6
+                else if (newLevel <= 5) wm.UpgradeOrbit();
+                else wm.EvolveOrbit();
                 break;
 
             case UpgradeId.Lightning:
                 if (prevLevel == 0) wm.AddLightning();
-                else if (newLevel <= 5) wm.UpgradeLightning();  // niv 2..5
-                else wm.EvolveLightning();                      // niv 6
+                else if (newLevel <= 5) wm.UpgradeLightning();
+                else wm.EvolveLightning();
                 break;
         }
     }
-
 
     // ---------- Titres ----------
     public static string Title(UpgradeId id) => id switch {

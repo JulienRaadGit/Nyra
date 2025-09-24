@@ -18,7 +18,7 @@ public class UIRaycastRouter : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        if (!joystick) joystick = FindObjectOfType<VirtualJoystick>(true);
+        if (!joystick) joystick = FindFirstObjectByType<VirtualJoystick>();
         if (joystick)
         {
             var areaGO = joystick.area ? joystick.area.gameObject : joystick.gameObject;
