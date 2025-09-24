@@ -66,6 +66,22 @@ namespace Nyra.Upgrades
             starfallDef.maxLevel = 6;
             definitions.Add(starfallDef);
             
+            // Orbit
+            var orbitDef = ScriptableObject.CreateInstance<UpgradeDefinition>();
+            orbitDef.id = UpgradeId.Orbit;
+            orbitDef.label = "Orbes en Orbite";
+            orbitDef.description = "Des orbes tournent autour du joueur";
+            orbitDef.maxLevel = 6;
+            definitions.Add(orbitDef);
+            
+            // Lightning
+            var lightningDef = ScriptableObject.CreateInstance<UpgradeDefinition>();
+            lightningDef.id = UpgradeId.Lightning;
+            lightningDef.label = "Éclair en Plein Air";
+            lightningDef.description = "Frappe les ennemis avec des éclairs";
+            lightningDef.maxLevel = 6;
+            definitions.Add(lightningDef);
+            
             // Assigner les définitions à la base de données
             database.upgradeDefinitions = definitions;
             
@@ -93,7 +109,7 @@ namespace Nyra.Upgrades
         [ContextMenu("Validate Current Database")]
         public void ValidateCurrentDatabase()
         {
-            var upgradeSystem = FindObjectOfType<UpgradeSystem>();
+            var upgradeSystem = FindFirstObjectByType<UpgradeSystem>();
             if (upgradeSystem == null)
             {
                 Debug.LogWarning("[UpgradeDatabaseCreator] Aucun UpgradeSystem trouvé dans la scène");
