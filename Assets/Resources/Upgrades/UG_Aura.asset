@@ -16,4 +16,5 @@ MonoBehaviour:
   label: Aura
   description: "Inflige des d\xE9g\xE2ts continus autour du joueur."
   icon: {fileID: 21300000, guid: 91b3a3432a1bbbd43bc2942a95f98384, type: 3}
+  bookSprite: {fileID: -5431639287224643875, guid: 3a85770d5929a0e40bec9e5ed0b15878, type: 3}
   maxLevel: 6

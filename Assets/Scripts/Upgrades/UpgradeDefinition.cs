@@ -24,6 +24,9 @@ namespace Nyra.Upgrades
         [Tooltip("Icône affichée dans l'interface utilisateur")]
         public Sprite icon;
         
+        [Tooltip("Sprite du livre généré à la main pour l'affichage BookCard")]
+        public Sprite bookSprite;
+        
         [Header("Configuration")]
         [Tooltip("Niveau maximum que peut atteindre cet upgrade")]
         [Range(1, 10)]

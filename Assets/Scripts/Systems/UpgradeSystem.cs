@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Nyra.Upgrades;
+using Nyra.UI;
 
 // Enum legacy - sera remplacé par celui dans le namespace Nyra.Upgrades
 public enum UpgradeId {
@@ -101,21 +102,26 @@ public class UpgradeSystem : MonoBehaviour {
     }
 
     public Sprite Icon(UpgradeId id){
-        // Priorité à la nouvelle base de données
+        // Priorité à la nouvelle base de données - utiliser bookSprite au lieu de icon
         if (upgradeDatabase != null)
         {
             var newId = MapToNewUpgradeId(id);
             if (newId.HasValue)
             {
                 var definition = upgradeDatabase.Get(newId.Value);
-                if (definition != null && definition.icon != null)
+                if (definition != null && definition.bookSprite != null)
                 {
-                    Debug.Log($"[UpgradeSystem] Icône trouvée pour {id} -> {newId.Value}: {definition.icon.name}");
+                    Debug.Log($"[UpgradeSystem] BookSprite trouvé pour {id} -> {newId.Value}: {definition.bookSprite.name}");
+                    return definition.bookSprite;
+                }
+                else if (definition != null && definition.icon != null)
+                {
+                    Debug.Log($"[UpgradeSystem] BookSprite manquant, utilisation de l'icône pour {id} -> {newId.Value}: {definition.icon.name}");
                     return definition.icon;
                 }
                 else
                 {
-                    Debug.LogWarning($"[UpgradeSystem] Aucune icône trouvée pour {id} -> {newId.Value} dans la DB");
+                    Debug.LogWarning($"[UpgradeSystem] Aucun sprite trouvé pour {id} -> {newId.Value} dans la DB");
                 }
             }
             else
@@ -125,7 +131,7 @@ public class UpgradeSystem : MonoBehaviour {
         }
         else
         {
-            Debug.LogWarning("[UpgradeSystem] UpgradeDatabase est null");
+            Debug.LogWarning("[UpgradeSystem] UpgradeDatabase est null - utilisation du fallback legacy");
         }
         
         // Fallback legacy
@@ -172,8 +178,23 @@ public class UpgradeSystem : MonoBehaviour {
             {
                 var definition = upgradeDatabase.Get(newId.Value);
                 if (definition != null && !string.IsNullOrEmpty(definition.label))
+                {
                     baseTitle = definition.label;
+                    Debug.Log($"[UpgradeSystem] Label trouvé pour {id} -> {newId.Value}: {definition.label}");
+                }
+                else
+                {
+                    Debug.LogWarning($"[UpgradeSystem] Aucun label trouvé pour {id} -> {newId.Value} dans la DB");
+                }
             }
+            else
+            {
+                Debug.LogWarning($"[UpgradeSystem] Pas de mapping pour {id} vers le nouvel enum");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[UpgradeSystem] UpgradeDatabase est null - utilisation du titre par défaut");
         }
 
         if (IsWeapon(id) && lv >= STAT_CAP) {

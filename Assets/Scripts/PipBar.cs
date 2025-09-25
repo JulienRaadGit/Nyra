@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class PipBar : MonoBehaviour
 {
     [SerializeField] private Image[] pips; // Laisse vide : auto-bind
-    [SerializeField] private float onAlpha = 1f;
-    [SerializeField] private float offAlpha = 0.3f;
+    [SerializeField] private Color onColor = Color.white; // Couleur quand l'upgrade est pris
+    [SerializeField] private Color offColor = Color.gray; // Couleur quand l'upgrade n'est pas pris
 
     void Reset()        { AutoBind(); }
     void OnValidate()   { if (pips == null || pips.Length == 0) AutoBind(); }
@@ -18,6 +18,24 @@ public class PipBar : MonoBehaviour
             if (img) list.Add(img);
         }
         pips = list.ToArray();
+        
+        // Initialiser toutes les bougies comme visibles mais grises
+        InitializeAllPips();
+    }
+    
+    /// <summary>
+    /// Initialise toutes les bougies comme visibles mais grises (niveau 0)
+    /// </summary>
+    public void InitializeAllPips(){
+        if (pips == null || pips.Length == 0) return;
+        
+        for (int i = 0; i < pips.Length; i++){
+            var img = pips[i]; if (!img) continue;
+            
+            // Rendre toutes les bougies visibles mais grises
+            img.color = offColor;
+            if (img.type == Image.Type.Filled) img.fillAmount = 0f;
+        }
     }
 
     /// 1 niveau = 1 forme pleine (max = pips.Length, donc 5).
@@ -32,9 +50,8 @@ public class PipBar : MonoBehaviour
             // IMPORTANT : chaque Pip doit être Image -> Type = Filled -> Horizontal -> Origin = Left
             if (img.type == Image.Type.Filled) img.fillAmount = on ? 1f : 0f;
 
-            var c = img.color;
-            c.a = on ? onAlpha : offAlpha;
-            img.color = c;
+            // Utiliser la couleur au lieu de l'alpha pour montrer l'état
+            img.color = on ? onColor : offColor;
         }
     }
 
@@ -50,9 +67,8 @@ public class PipBar : MonoBehaviour
             float pipFill = Mathf.Clamp01(fill - i);
             if (img.type == Image.Type.Filled) img.fillAmount = pipFill;
 
-            var c = img.color;
-            c.a = pipFill > 0.05f ? onAlpha : offAlpha;
-            img.color = c;
+            // Utiliser la couleur au lieu de l'alpha pour montrer l'état
+            img.color = pipFill > 0.05f ? onColor : offColor;
         }
     }
 }
