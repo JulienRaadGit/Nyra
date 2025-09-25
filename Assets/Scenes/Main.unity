@@ -2463,8 +2463,8 @@ MonoBehaviour:
   - {fileID: 951018375}
   - {fileID: 352664991}
   - {fileID: 99605202}
-  onAlpha: 1
-  offAlpha: 0.3
+  onColor: {r: 1, g: 1, b: 1, a: 1}
+  offColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1177911813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3086,13 +3086,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1404080528}
-  container: {fileID: 0}
-  bookCardPrefab: {fileID: 0}
-  upgradeDatabase: {fileID: 11400000, guid: f57e7c890ec21de4cbce58169aa62976, type: 2}
-  legacyButtons: []
-  legacyLabels: []
-  legacyIcons: []
-  legacyLevelPipBars: []
+  legacyButtons:
+  - {fileID: 1528506851}
+  - {fileID: 924959404}
+  - {fileID: 1990317135}
+  legacyLabels:
+  - {fileID: 82705932}
+  - {fileID: 276926835}
+  - {fileID: 2132235403}
+  legacyIcons:
+  - {fileID: 88433164}
+  - {fileID: 995456495}
+  - {fileID: 974559906}
+  legacyLevelPipBars:
+  - {fileID: 1177911812}
+  - {fileID: 1543095212}
+  - {fileID: 1452275041}
 --- !u!114 &1404080534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3310,8 +3319,8 @@ MonoBehaviour:
   - {fileID: 414589894}
   - {fileID: 977100371}
   - {fileID: 716142141}
-  onAlpha: 1
-  offAlpha: 0.3
+  onColor: {r: 1, g: 1, b: 1, a: 1}
+  offColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1452275042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3617,8 +3626,8 @@ MonoBehaviour:
   - {fileID: 1396578247}
   - {fileID: 1380958508}
   - {fileID: 2140034123}
-  onAlpha: 1
-  offAlpha: 0.3
+  onColor: {r: 1, g: 1, b: 1, a: 1}
+  offColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1543095213
 MonoBehaviour:
   m_ObjectHideFlags: 0

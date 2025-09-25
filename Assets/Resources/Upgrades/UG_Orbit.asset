@@ -17,5 +17,5 @@ MonoBehaviour:
   description: "Des orbes tournent autour du joueur et infligent des d\xE9g\xE2ts
     de contact."
   icon: {fileID: 21300000, guid: 7e36dc82be8b17f458986409dd759afc, type: 3}
-  bookSprite: {fileID: 21300000, guid: 7e36dc82be8b17f458986409dd759afc, type: 3}
+  bookSprite: {fileID: -7151579997051602957, guid: f5fb6cc9fff6d8649af338e1988f875c, type: 3}
   maxLevel: 6
