@@ -165,7 +165,7 @@ public class UpgradeSystem : MonoBehaviour {
         };
     }
 
-    // Libellé pour l'UI (titre + niveau)
+    // Libellé pour l'UI (titre uniquement)
     public string Label(UpgradeId id){
         int lv = LevelOf(id);
         string baseTitle = Title(id);
@@ -197,11 +197,8 @@ public class UpgradeSystem : MonoBehaviour {
             Debug.LogWarning("[UpgradeSystem] UpgradeDatabase est null - utilisation du titre par défaut");
         }
 
-        if (IsWeapon(id) && lv >= STAT_CAP) {
-            // 5/5 -> prochaine = ÉVO (niv 6)
-            return $"{baseTitle}  (niv {Mathf.Min(lv,5)}/5 → ÉVO)";
-        }
-        return $"{baseTitle}  (niv {Mathf.Min(lv,5)}/5)";
+        // Ne plus inclure le niveau dans le nom; l'UI a un label dédié pour le niveau
+        return baseTitle;
     }
 
     // ---------- Offre ----------

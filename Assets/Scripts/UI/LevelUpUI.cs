@@ -20,6 +20,8 @@ namespace Nyra.UI
         [SerializeField] private TextMeshProUGUI[] legacyLabels;
         [SerializeField] private Image[] legacyIcons;
         [SerializeField] private PipBar[] legacyLevelPipBars;
+        [SerializeField] private TextMeshProUGUI[] legacyNiveauLabels; // Libellé "niveau" sous l'icône
+        [SerializeField] private TextMeshProUGUI[] legacyNewLabels; // Badge "New" au-dessus de l'icône
 
         private List<UpgradeId> currentOffers;
         private bool isOpen;
@@ -28,6 +30,9 @@ namespace Nyra.UI
         void Awake()
         {
             if (!panel) Debug.LogError("[LevelUpUI] 'panel' non assigné (racine LevelUpPanel).");
+            // Forcer panel caché au lancement, peu importe l'état dans l'Inspector
+            if (panel) panel.SetActive(false);
+            isOpen = false;
         }
 
         /// <summary>
@@ -97,12 +102,29 @@ namespace Nyra.UI
                             legacyIcons[i].gameObject.SetActive(sprite != null);
                     }
 
-                    // Niveau → PIPS
+                    // Niveau → PIPS (mode 2 phases si max=6)
                     int lvl = SafeLevel(upId);
                     int max = SafeMaxLevel(upId);
                     if (legacyLevelPipBars != null && i < legacyLevelPipBars.Length && legacyLevelPipBars[i] != null)
                     {
-                        legacyLevelPipBars[i].SetStep(lvl);
+                        if (max >= 6)
+                            legacyLevelPipBars[i].SetTwoPhase(lvl);
+                        else
+                            legacyLevelPipBars[i].SetStep(lvl);
+                    }
+
+                    // Texte du label "niveau"
+                    if (legacyNiveauLabels != null && i < legacyNiveauLabels.Length && legacyNiveauLabels[i] != null)
+                    {
+                        legacyNiveauLabels[i].text = BuildNiveauText(lvl, max);
+                    }
+
+                    // Badge "New" (visible uniquement si niveau == 0)
+                    if (legacyNewLabels != null && i < legacyNewLabels.Length && legacyNewLabels[i] != null)
+                    {
+                        bool showNew = lvl == 0;
+                        if (legacyNewLabels[i].gameObject.activeSelf != showNew)
+                            legacyNewLabels[i].gameObject.SetActive(showNew);
                     }
 
                     int k = i;
@@ -136,6 +158,23 @@ namespace Nyra.UI
             UIRaycastRouter.Instance?.ForceEnableJoystick();
 
             if (i >= 0 && i < currentOffers.Count) UpgradeSystem.Instance.Pick(currentOffers[i]);
+        }
+
+        private string BuildNiveauText(int lvl, int max)
+        {
+            // Stats: 5 max, Weapons: 6 max (évo après 5)
+            lvl = Mathf.Max(0, lvl);
+            max = Mathf.Max(1, max);
+
+            if (max >= 6)
+            {
+                // Affiche l'indication d'évolution à 5
+                if (lvl >= 5 && lvl < 6)
+                    return $"niv {Mathf.Min(lvl, 5)}/5 → ÉVO";
+                return $"niv {Mathf.Min(lvl, 6)}/6";
+            }
+
+            return $"niv {Mathf.Min(lvl, 5)}/5";
         }
     }
 }
