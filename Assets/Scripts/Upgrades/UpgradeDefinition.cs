@@ -21,11 +21,8 @@ namespace Nyra.Upgrades
         [TextArea(2, 4)]
         public string description;
         
-        [Tooltip("Icône affichée dans l'interface utilisateur")]
+        [Tooltip("Icône d'arme affichée dans l'interface utilisateur (aura, starfall, etc.)")]
         public Sprite icon;
-        
-        [Tooltip("Sprite du livre généré à la main pour l'affichage BookCard")]
-        public Sprite bookSprite;
         
         [Header("Configuration")]
         [Tooltip("Niveau maximum que peut atteindre cet upgrade")]

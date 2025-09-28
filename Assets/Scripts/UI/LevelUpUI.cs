@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 using System.Collections.Generic;
 using Nyra.Upgrades;
@@ -8,7 +9,7 @@ namespace Nyra.UI
 {
     /// <summary>
     /// Interface utilisateur pour l'affichage des choix d'upgrade.
-    /// Affiche les sprites de livres dans l'interface legacy avec des bougies pour les niveaux.
+    /// Affiche les icônes d'armes (aura, starfall, etc.) dans l'interface avec des bougies pour les niveaux.
     /// </summary>
     public class LevelUpUI : MonoBehaviour
     {
@@ -34,20 +35,40 @@ namespace Nyra.UI
             if (panel) panel.SetActive(false);
             isOpen = false;
         }
+        
+        void Update()
+        {
+            // Surveiller l'état du panel pour détecter les problèmes
+            if (isOpen && panel && !panel.activeSelf)
+            {
+                panel.SetActive(true);
+            }
+        }
 
         /// <summary>
-        /// Affiche les offres d'upgrade avec les sprites de livres
+        /// Affiche les offres d'upgrade avec les icônes d'armes
         /// </summary>
         /// <param name="offer">Liste des UpgradeId à afficher</param>
         public void Show(List<UpgradeId> offer)
         {
-            // Utiliser le mode legacy avec les sprites de livres
+            // Utiliser le mode legacy avec les icônes d'armes
             ShowLegacy(offer);
         }
-
+        
+        /// <summary>
+        /// Force la réouverture du panel si nécessaire
+        /// </summary>
+        public void ForceReopen()
+        {
+            if (panel && !panel.activeSelf)
+            {
+                panel.SetActive(true);
+                isOpen = true;
+            }
+        }
 
         /// <summary>
-        /// Affiche les offres d'upgrade avec les sprites de livres et les bougies de niveau
+        /// Affiche les offres d'upgrade avec les icônes d'armes et les bougies de niveau
         /// </summary>
         /// <param name="offer">Liste des UpgradeId à afficher</param>
         public void ShowLegacy(List<UpgradeId> offer)
@@ -56,28 +77,41 @@ namespace Nyra.UI
             isOpen = true;
 
             currentOffers = offer ?? new List<UpgradeId>();
-            if (!panel)
+            if (!panel) { Debug.LogError("[LevelUpUI] Panel manquant."); return; }
+
+            // 1) Activer le panel
+            panel.SetActive(true);
+
+            // 2) Le mettre devant
+            panel.transform.SetAsLastSibling();
+
+            // 3) S'assurer que le CanvasGroup permet les clics
+            var cg = panel.GetComponent<CanvasGroup>();
+            if (cg)
             {
-                Debug.LogError("[LevelUpUI] Panel manquant.");
-                return;
+                cg.alpha = 1f;
+                cg.interactable = true;
+                cg.blocksRaycasts = true;
             }
 
+            // 4) Forcer l'ordre d'affichage (au-dessus)
+            var canvas = panel.GetComponentInParent<Canvas>();
+            if (canvas)
+            {
+                canvas.overrideSorting = true;
+                canvas.sortingOrder = 700;
+            }
+
+            // 5) Couper les raycasts du joystick via UIRaycastRouter
             UIRaycastRouter.Instance?.ShowModal(panel, sortingOrder: 700);
 
-            var rt = panel.GetComponent<RectTransform>();
-            if (rt)
-            {
-                rt.anchorMin = Vector2.zero;
-                rt.anchorMax = Vector2.one;
-                rt.offsetMin = Vector2.zero;
-                rt.offsetMax = Vector2.zero;
-                rt.anchoredPosition = Vector2.zero;
-                rt.localScale = Vector3.one;
-            }
-
+            // 6) Mettre Time.timeScale = 0f seulement après avoir routé l'UI
             Time.timeScale = 0f;
 
-            // Utiliser les boutons legacy
+            // 7) Forcer un Canvas.ForceUpdateCanvases()
+            Canvas.ForceUpdateCanvases();
+
+            // 8) Configuration des boutons
             for (int i = 0; i < legacyButtons.Length; i++)
             {
                 bool on = i < currentOffers.Count;
@@ -130,10 +164,17 @@ namespace Nyra.UI
                     int k = i;
                     legacyButtons[i].onClick.RemoveAllListeners();
                     legacyButtons[i].onClick.AddListener(() => PickLegacy(k));
+                    
+                    // S'assurer que le bouton est interactable
+                    legacyButtons[i].interactable = true;
                 }
             }
 
-            Debug.Log("[LevelUpUI] Panel ouvert avec sprites de livres et bougies de niveau.");
+            // 9) Sélectionner le premier bouton avec EventSystem
+            if (legacyButtons.Length > 0 && legacyButtons[0] != null && legacyButtons[0].gameObject.activeSelf)
+            {
+                EventSystem.current?.SetSelectedGameObject(legacyButtons[0].gameObject);
+            }
         }
 
         private int SafeLevel(UpgradeId id)
@@ -150,12 +191,24 @@ namespace Nyra.UI
 
         private void PickLegacy(int i)
         {
+            // Si le panel n'est pas ouvert mais qu'il devrait l'être, le rouvrir
+            if (!isOpen && panel.activeSelf)
+            {
+                isOpen = true;
+            }
+            
             if (!isOpen) return;
             isOpen = false;
 
-            UIRaycastRouter.Instance?.HideModal(panel);
+            // Restaurer l'état : Time.timeScale = 1f
             Time.timeScale = 1f;
+            
+            // Réactiver les raycasts du joystick
+            UIRaycastRouter.Instance?.HideModal(panel);
             UIRaycastRouter.Instance?.ForceEnableJoystick();
+
+            // Désactiver le panel
+            panel.SetActive(false);
 
             if (i >= 0 && i < currentOffers.Count) UpgradeSystem.Instance.Pick(currentOffers[i]);
         }

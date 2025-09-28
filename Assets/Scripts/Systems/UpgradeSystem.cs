@@ -102,26 +102,21 @@ public class UpgradeSystem : MonoBehaviour {
     }
 
     public Sprite Icon(UpgradeId id){
-        // Priorité à la nouvelle base de données - utiliser bookSprite au lieu de icon
+        // Priorité à la nouvelle base de données - utiliser les icônes d'armes au lieu des livres
         if (upgradeDatabase != null)
         {
             var newId = MapToNewUpgradeId(id);
             if (newId.HasValue)
             {
                 var definition = upgradeDatabase.Get(newId.Value);
-                if (definition != null && definition.bookSprite != null)
+                if (definition != null && definition.icon != null)
                 {
-                    Debug.Log($"[UpgradeSystem] BookSprite trouvé pour {id} -> {newId.Value}: {definition.bookSprite.name}");
-                    return definition.bookSprite;
-                }
-                else if (definition != null && definition.icon != null)
-                {
-                    Debug.Log($"[UpgradeSystem] BookSprite manquant, utilisation de l'icône pour {id} -> {newId.Value}: {definition.icon.name}");
+                    Debug.Log($"[UpgradeSystem] Icône d'arme trouvée pour {id} -> {newId.Value}: {definition.icon.name}");
                     return definition.icon;
                 }
                 else
                 {
-                    Debug.LogWarning($"[UpgradeSystem] Aucun sprite trouvé pour {id} -> {newId.Value} dans la DB");
+                    Debug.LogWarning($"[UpgradeSystem] Aucune icône trouvée pour {id} -> {newId.Value} dans la DB");
                 }
             }
             else

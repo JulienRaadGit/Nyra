@@ -2,7 +2,7 @@
 
 ## 🐛 Problème Identifié
 
-Les icônes dans `Assets/Resources/upgrades` ne s'affichaient pas sur les cartes d'upgrade à cause d'une incompatibilité entre deux systèmes d'enum :
+Les icônes d'armes dans `Assets/Resources/upgrades` ne s'affichaient pas sur les cartes d'upgrade à cause d'une incompatibilité entre deux systèmes d'enum :
 
 1. **Enum legacy** dans `UpgradeSystem.cs` : `XpPlus`, `GoldPlus`, `DamagePlus`, etc.
 2. **Enum nouveau** dans `Nyra.Upgrades.UpgradeId` : `HP`, `Damage`, `MoveSpeed`, etc.
@@ -67,12 +67,13 @@ Un script `UpgradeIconTester.cs` a été créé pour tester l'affichage des icô
 
 ## 🎯 Résultat Attendu
 
-Après cette correction, les icônes devraient maintenant s'afficher correctement sur les cartes d'upgrade car :
+Après cette correction, les icônes d'armes devraient maintenant s'afficher correctement sur les cartes d'upgrade car :
 
 1. ✅ Le mapping entre les enums fonctionne
-2. ✅ Les icônes sont récupérées depuis la base de données
+2. ✅ Les icônes d'armes sont récupérées depuis la base de données
 3. ✅ Le système de fallback legacy est préservé
 4. ✅ Les logs permettent de diagnostiquer les problèmes
+5. ✅ Le système de livres a été complètement supprimé
 
 ## 🚀 Test Rapide
 

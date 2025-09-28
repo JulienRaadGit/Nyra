@@ -63,7 +63,7 @@ namespace Nyra.Systems
             {
                 if (def != null)
                 {
-                    Debug.Log($"  - {def.id}: '{def.label}' (bookSprite: {(def.bookSprite != null ? def.bookSprite.name : "NULL")}, icon: {(def.icon != null ? def.icon.name : "NULL")})");
+                    Debug.Log($"  - {def.id}: '{def.label}' (icon: {(def.icon != null ? def.icon.name : "NULL")})");
                 }
             }
             
@@ -86,7 +86,7 @@ namespace Nyra.Systems
                 var definition = upgradeSystem.upgradeDatabase.Get(newId.Value);
                 if (definition != null)
                 {
-                    Debug.Log($"  ✓ {legacyId} -> {newId.Value}: '{definition.label}' (bookSprite: {(definition.bookSprite != null ? "✓" : "✗")}, icon: {(definition.icon != null ? "✓" : "✗")})");
+                    Debug.Log($"  ✓ {legacyId} -> {newId.Value}: '{definition.label}' (icon: {(definition.icon != null ? "✓" : "✗")})");
                 }
                 else
                 {
