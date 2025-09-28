@@ -1,0 +1,1638 @@
+fileFormatVersion: 2
+guid: d44c2eabeb26f8f4c89c03c710b2299a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3364236542073706041
+    second: tout_0
+  - first:
+      213: 5841313083930768573
+    second: tout_1
+  - first:
+      213: 3204722439389410924
+    second: tout_2
+  - first:
+      213: -8118661774076912636
+    second: tout_3
+  - first:
+      213: -3634975004266243474
+    second: tout_4
+  - first:
+      213: -429142589325340804
+    second: tout_5
+  - first:
+      213: 2105506713636895442
+    second: tout_6
+  - first:
+      213: 3768996160355793608
+    second: tout_7
+  - first:
+      213: -993027915853018108
+    second: tout_8
+  - first:
+      213: -2603797151144503430
+    second: tout_9
+  - first:
+      213: -3529725165444676041
+    second: tout_10
+  - first:
+      213: 5476460922114846375
+    second: tout_11
+  - first:
+      213: 1785076233427736831
+    second: tout_12
+  - first:
+      213: -4659035936808150313
+    second: tout_13
+  - first:
+      213: -1676816051338328253
+    second: tout_14
+  - first:
+      213: 8245095729261395435
+    second: tout_15
+  - first:
+      213: -3416650253564955307
+    second: tout_16
+  - first:
+      213: 5599467175391108307
+    second: tout_17
+  - first:
+      213: 1569757432170198592
+    second: tout_18
+  - first:
+      213: -8481207565480937282
+    second: tout_19
+  - first:
+      213: -6570233450991894157
+    second: tout_20
+  - first:
+      213: -8481034117686995926
+    second: tout_21
+  - first:
+      213: 7463901155572360095
+    second: tout_22
+  - first:
+      213: -2817728268441143137
+    second: tout_23
+  - first:
+      213: -7885171409889514600
+    second: tout_24
+  - first:
+      213: -8744542033116804481
+    second: tout_25
+  - first:
+      213: 6253256099435911659
+    second: tout_26
+  - first:
+      213: -7684362914255866462
+    second: tout_27
+  - first:
+      213: -645604214028064622
+    second: tout_28
+  - first:
+      213: 8464268553265143084
+    second: tout_29
+  - first:
+      213: -4681483114739110500
+    second: tout_30
+  - first:
+      213: -4395808193296747075
+    second: tout_31
+  - first:
+      213: -3790933356660477787
+    second: tout_32
+  - first:
+      213: -1834008456754735721
+    second: tout_33
+  - first:
+      213: 9145525846365379637
+    second: tout_34
+  - first:
+      213: -1258851880611487296
+    second: tout_35
+  - first:
+      213: 7807641069854639829
+    second: tout_36
+  - first:
+      213: -8729048342715618373
+    second: tout_37
+  - first:
+      213: -4230868953587066602
+    second: tout_38
+  - first:
+      213: 7442261852237549340
+    second: tout_39
+  - first:
+      213: 8399256999844730989
+    second: tout_40
+  - first:
+      213: -802326295833261280
+    second: tout_41
+  - first:
+      213: -6146359886406013122
+    second: tout_42
+  - first:
+      213: -6916739088166796773
+    second: tout_43
+  - first:
+      213: 564843163649075882
+    second: tout_44
+  - first:
+      213: -1804147814184201165
+    second: tout_45
+  - first:
+      213: 6049238928297689595
+    second: tout_46
+  - first:
+      213: 6174628967589410108
+    second: tout_47
+  - first:
+      213: 2770684779617691272
+    second: tout_48
+  - first:
+      213: 1364947418197447379
+    second: tout_49
+  - first:
+      213: 6479318573475737272
+    second: tout_50
+  - first:
+      213: -8555081932896564184
+    second: tout_51
+  - first:
+      213: -7252680592901299136
+    second: tout_52
+  - first:
+      213: -999359523560428314
+    second: tout_53
+  - first:
+      213: 7342837820162765787
+    second: tout_54
+  - first:
+      213: 1422837388693255433
+    second: tout_55
+  - first:
+      213: -3011020811844006119
+    second: tout_56
+  - first:
+      213: 4246524362821491031
+    second: tout_57
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tout_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 983
+        width: 154
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93611be7f4b20be20800000000000000
+      internalID: 3364236542073706041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_1
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 983
+        width: 166
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db4f88d1d43801150800000000000000
+      internalID: 5841313083930768573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_2
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 981
+        width: 161
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c66778b4416797c20800000000000000
+      internalID: 3204722439389410924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_3
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 974
+        width: 151
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40c5a988128b45f80800000000000000
+      internalID: -8118661774076912636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_4
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 970
+        width: 140
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a59471e79fd8dc0800000000000000
+      internalID: -3634975004266243474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_5
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 785
+        width: 173
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7f8545b6116b0af0800000000000000
+      internalID: -429142589325340804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_6
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 783
+        width: 168
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2daf68a5333483d10800000000000000
+      internalID: 2105506713636895442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_7
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 787
+        width: 154
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ca71d1f90a2e4430800000000000000
+      internalID: 3768996160355793608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_8
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 790
+        width: 167
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40cc88f2f5e0832f0800000000000000
+      internalID: -993027915853018108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_9
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 798
+        width: 164
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a779bda59447ddbd0800000000000000
+      internalID: -2603797151144503430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_10
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 593
+        width: 166
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736c9eec9a5e30fc0800000000000000
+      internalID: -3529725165444676041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_11
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 592
+        width: 181
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aea6f0713c400c40800000000000000
+      internalID: 5476460922114846375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_12
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 588
+        width: 153
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8d376606dd5c810800000000000000
+      internalID: 1785076233427736831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_13
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 591
+        width: 156
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7da55c60087c75fb0800000000000000
+      internalID: -4659035936808150313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_14
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 593
+        width: 159
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3474e4a7fa0cab8e0800000000000000
+      internalID: -1676816051338328253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 403
+        width: 176
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed37b1a1e67c6270800000000000000
+      internalID: 8245095729261395435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_16
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 401
+        width: 194
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 555338252be9590d0800000000000000
+      internalID: -3416650253564955307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_17
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 404
+        width: 193
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc95a09abd45bd40800000000000000
+      internalID: 5599467175391108307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_18
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 392
+        width: 191
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 046b8005116e8c510800000000000000
+      internalID: 1569757432170198592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_19
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 520
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8372197a2bc4a80800000000000000
+      internalID: -8481207565480937282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_20
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 394
+        width: 187
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3714d36ac77d1d4a0800000000000000
+      internalID: -6570233450991894157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_21
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 506
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a245c4787605d4a80800000000000000
+      internalID: -8481034117686995926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_22
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 512
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f93a4883e8a159760800000000000000
+      internalID: 7463901155572360095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_23
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 502
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f983dfd911b65e8d0800000000000000
+      internalID: -2817728268441143137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_24
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 492
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b2870516e329290800000000000000
+      internalID: -7885171409889514600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_25
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 498
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ac998f95525a680800000000000000
+      internalID: -8744542033116804481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_26
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 496
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be91c609a4708c650800000000000000
+      internalID: 6253256099435911659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_27
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 486
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a5f79a94a8ab5590800000000000000
+      internalID: -7684362914255866462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_28
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 494
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 298ac5d436a5a07f0800000000000000
+      internalID: -645604214028064622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_29
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 498
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2dd0e0576f177570800000000000000
+      internalID: 8464268553265143084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 481
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9d6cf329e7080fb0800000000000000
+      internalID: -4681483114739110500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_31
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 483
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db5bbc9fcb3fef2c0800000000000000
+      internalID: -4395808193296747075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_32
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 482
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a0b2158236e36bc0800000000000000
+      internalID: -3790933356660477787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_33
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 485
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 795521c860b4c86e0800000000000000
+      internalID: -1834008456754735721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_34
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 487
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53c13cc5d4f6bee70800000000000000
+      internalID: 9145525846365379637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 467
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c1e15f52e8a78ee0800000000000000
+      internalID: -1258851880611487296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_36
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 474
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d6cf66bf205a5c60800000000000000
+      internalID: 7807641069854639829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_37
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 471
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbb2931e7c03cd680800000000000000
+      internalID: -8729048342715618373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_38
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 471
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 619d6325a1fe845c0800000000000000
+      internalID: -4230868953587066602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_39
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 475
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f4f0c49b9384760800000000000000
+      internalID: 7442261852237549340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_40
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 479
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6855fc7db7209470800000000000000
+      internalID: 8399256999844730989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_41
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 464
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b47ee1c709dd4f0800000000000000
+      internalID: -802326295833261280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_42
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 458
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f2f058f3eb3baa0800000000000000
+      internalID: -6146359886406013122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_43
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 462
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1242cd127ec200a0800000000000000
+      internalID: -6916739088166796773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_44
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 459
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa6c1b5dd9b6d700800000000000000
+      internalID: 564843163649075882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_45
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 452
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 334d04d2f1166f6e0800000000000000
+      internalID: -1804147814184201165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_46
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 448
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf106aa41c633f350800000000000000
+      internalID: 6049238928297689595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_47
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 444
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c35f009d450b0b550800000000000000
+      internalID: 6174628967589410108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_48
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 202
+        width: 151
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 886a1b99023737620800000000000000
+      internalID: 2770684779617691272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_49
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 203
+        width: 151
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2debee17441f210800000000000000
+      internalID: 1364947418197447379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_50
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 207
+        width: 157
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8beac96e9e92be950800000000000000
+      internalID: 6479318573475737272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_51
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 207
+        width: 146
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82c865d0f4e364980800000000000000
+      internalID: -8555081932896564184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_52
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 203
+        width: 154
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 044afb65d6d495b90800000000000000
+      internalID: -7252680592901299136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_53
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 9
+        width: 144
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ece643eecf8122f0800000000000000
+      internalID: -999359523560428314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_54
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 2
+        width: 152
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd3fa1ae71007e560800000000000000
+      internalID: 7342837820162765787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_55
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 9
+        width: 152
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 905b436011feeb310800000000000000
+      internalID: 1422837388693255433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_56
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 9
+        width: 165
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91fcab25684b636d0800000000000000
+      internalID: -3011020811844006119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tout_57
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 9
+        width: 168
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7595400b86faeea30800000000000000
+      internalID: 4246524362821491031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tout_0: 3364236542073706041
+      tout_1: 5841313083930768573
+      tout_10: -3529725165444676041
+      tout_11: 5476460922114846375
+      tout_12: 1785076233427736831
+      tout_13: -4659035936808150313
+      tout_14: -1676816051338328253
+      tout_15: 8245095729261395435
+      tout_16: -3416650253564955307
+      tout_17: 5599467175391108307
+      tout_18: 1569757432170198592
+      tout_19: -8481207565480937282
+      tout_2: 3204722439389410924
+      tout_20: -6570233450991894157
+      tout_21: -8481034117686995926
+      tout_22: 7463901155572360095
+      tout_23: -2817728268441143137
+      tout_24: -7885171409889514600
+      tout_25: -8744542033116804481
+      tout_26: 6253256099435911659
+      tout_27: -7684362914255866462
+      tout_28: -645604214028064622
+      tout_29: 8464268553265143084
+      tout_3: -8118661774076912636
+      tout_30: -4681483114739110500
+      tout_31: -4395808193296747075
+      tout_32: -3790933356660477787
+      tout_33: -1834008456754735721
+      tout_34: 9145525846365379637
+      tout_35: -1258851880611487296
+      tout_36: 7807641069854639829
+      tout_37: -8729048342715618373
+      tout_38: -4230868953587066602
+      tout_39: 7442261852237549340
+      tout_4: -3634975004266243474
+      tout_40: 8399256999844730989
+      tout_41: -802326295833261280
+      tout_42: -6146359886406013122
+      tout_43: -6916739088166796773
+      tout_44: 564843163649075882
+      tout_45: -1804147814184201165
+      tout_46: 6049238928297689595
+      tout_47: 6174628967589410108
+      tout_48: 2770684779617691272
+      tout_49: 1364947418197447379
+      tout_5: -429142589325340804
+      tout_50: 6479318573475737272
+      tout_51: -8555081932896564184
+      tout_52: -7252680592901299136
+      tout_53: -999359523560428314
+      tout_54: 7342837820162765787
+      tout_55: 1422837388693255433
+      tout_56: -3011020811844006119
+      tout_57: 4246524362821491031
+      tout_6: 2105506713636895442
+      tout_7: 3768996160355793608
+      tout_8: -993027915853018108
+      tout_9: -2603797151144503430
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

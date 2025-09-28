@@ -15,6 +15,5 @@ MonoBehaviour:
   id: 4
   label: Starfall
   description: "Fait tomber des \xE9toiles infligeant des d\xE9g\xE2ts de zone."
-  icon: {fileID: 21300000, guid: 187ead53c94ff7643a055692aad0d5b5, type: 3}
-  bookSprite: {fileID: -2402351777977775150, guid: 82f6cd12565dddc478cb0227d7f37a27, type: 3}
+  icon: {fileID: -8486933445485161439, guid: 6dc088942d225ff4db8e844aae8d0b98, type: 3}
   maxLevel: 6

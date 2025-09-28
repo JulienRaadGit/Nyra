@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 2
   label: Vitesse +
   description: "Augmente la vitesse de d\xE9placement du joueur."
-  icon: {fileID: 21300000, guid: 8308db800e5860b4b97cfd7113084760, type: 3}
+  icon: {fileID: 3204722439389410924, guid: d44c2eabeb26f8f4c89c03c710b2299a, type: 3}
   maxLevel: 5
