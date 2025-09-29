@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 1
   label: "D\xE9g\xE2ts"
   description: "Augmente les d\xE9g\xE2ts de toutes les armes."
-  icon: {fileID: 2105506713636895442, guid: d44c2eabeb26f8f4c89c03c710b2299a, type: 3}
+  icon: {fileID: 8245095729261395435, guid: d44c2eabeb26f8f4c89c03c710b2299a, type: 3}
   maxLevel: 5
