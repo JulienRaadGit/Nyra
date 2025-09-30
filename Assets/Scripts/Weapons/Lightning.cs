@@ -48,45 +48,68 @@ public class Lightning : MonoBehaviour
             float interval = intervalPerLevel[idx];
             yield return new WaitForSeconds(interval);
 
-            int targets = targetsPerLevel[Mathf.Clamp(level - 1, 0, targetsPerLevel.Length - 1)];
             int dmg     = damagePerLevel[Mathf.Clamp(level - 1, 0, damagePerLevel.Length - 1)];
 
             var hits = Physics2D.OverlapCircleAll(transform.position, radius, enemyMask);
             if (hits == null || hits.Length == 0) continue;
 
-            // shuffle
+            // Choisir la cible la plus proche
+            Collider2D best = null;
+            float bestDist = float.MaxValue;
             for (int i = 0; i < hits.Length; i++)
-            {
-                int j = Random.Range(i, hits.Length);
-                (hits[i], hits[j]) = (hits[j], hits[i]);
-            }
-
-            int count = Mathf.Min(targets, hits.Length);
-            for (int i = 0; i < count; i++)
             {
                 var h = hits[i];
                 if (!h) continue;
-
-                // Créer un objet temporaire avec DamageOnTouch pour les dégâts
-                GameObject lightningStrike = new GameObject("LightningStrike");
-                lightningStrike.transform.position = h.transform.position;
-                
-                // Ajouter un collider pour le hit
-                CircleCollider2D col = lightningStrike.AddComponent<CircleCollider2D>();
-                col.isTrigger = true;
-                col.radius = 0.5f; // Petite zone d'impact
-                
-                // Ajouter DamageOnTouch pour gérer les dégâts
-                DamageOnTouch dot = lightningStrike.AddComponent<DamageOnTouch>();
-                dot.damage = dmg;
-                dot.owner = transform; // Owner est le joueur
-                
-                // Détruire l'objet après un court délai
-                Destroy(lightningStrike, 0.1f);
-
-                if (lightningVfxPrefab)
-                    Instantiate(lightningVfxPrefab, h.transform.position, Quaternion.identity);
+                float d = (h.transform.position - transform.position).sqrMagnitude;
+                if (d < bestDist)
+                {
+                    bestDist = d;
+                    best = h;
+                }
             }
+
+            if (best == null) continue;
+
+            // Appliquer les dégâts UNIQUEMENT à cette cible
+            ApplyDirectDamage(best.gameObject, dmg);
+
+            if (lightningVfxPrefab)
+            {
+                var vfx = Instantiate(lightningVfxPrefab, best.transform.position, Quaternion.identity);
+                Destroy(vfx, 0.25f);
+            }
+        }
+    }
+
+    private void ApplyDirectDamage(GameObject target, int dmg)
+    {
+        // Damageable support
+        if (target.TryGetComponent<Damageable>(out var damageable))
+        {
+            float mult = PlayerStats.Instance ? PlayerStats.Instance.damageMult : 1f;
+            damageable.Take(dmg * mult);
+            return;
+        }
+
+        // EnemyHealth support
+        if (target.TryGetComponent<EnemyHealth>(out var eh))
+        {
+            eh.TakeDamage(dmg);
+            return;
+        }
+
+        // Fallback: tenter sur les parents
+        var parentDamageable = target.GetComponentInParent<Damageable>();
+        if (parentDamageable != null)
+        {
+            float mult = PlayerStats.Instance ? PlayerStats.Instance.damageMult : 1f;
+            parentDamageable.Take(dmg * mult);
+            return;
+        }
+        var parentEh = target.GetComponentInParent<EnemyHealth>();
+        if (parentEh != null)
+        {
+            parentEh.TakeDamage(dmg);
         }
     }
 

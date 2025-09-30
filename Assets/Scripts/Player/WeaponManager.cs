@@ -143,6 +143,15 @@ public class WeaponManager : MonoBehaviour {
         lightningInstance = go.AddComponent<Lightning>();
         if (lightningPrefab) lightningInstance.lightningVfxPrefab = lightningPrefab;
 
+        // Assigner le layer mask des ennemis par défaut
+        int enemyMask = LayerMask.GetMask("Enemy");
+        if (enemyMask == 0)
+        {
+            Debug.LogWarning("[WeaponManager] Layer 'Enemy' introuvable. Utilisation de tous les layers pour l'éclair.");
+            enemyMask = ~0; // fallback: tous les layers
+        }
+        lightningInstance.enemyMask = enemyMask;
+
         lightningInstance.SetLevel(1);
     }
 
