@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4261302161743174991, guid: 524d72bd20f7e714f82170b87d8f9775, type: 3}
-  fireRate: 2
+  fireRate: 10
   range: 5
 --- !u!114 &4449270693332236013
 MonoBehaviour:
